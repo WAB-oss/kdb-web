@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>酷兑寶精品名床 | 老師傅手作床墊</title>
+    <style>
+        /* --- 1. 色彩計畫 --- */
+        :root {
+            --brand-blue: #1B325F; 
+            --soft-blue-bg: #F4F7F9; 
+            --primary-text: #2C3E50; 
+            --light-text: #8899A6;   
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Helvetica Neue", "Microsoft JhengHei", "PingFang TC", sans-serif;
+            letter-spacing: 0.05em; 
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--primary-text);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-text);
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--brand-blue);
+        }
+
+        /* --- 2. 頂部導覽列 --- */
+        header {
+            background-color: var(--white);
+            /* 修改點：高度增加到 110px，讓大 Logo 有呼吸空間 */
+            height: 110px; 
+            width: 100%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(27, 50, 95, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+        }
+
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            /* 修改點：Logo 圖片高度放大至 65px */
+            height: 65px; 
+            width: auto;
+            object-fit: contain;
+            margin-bottom: 5px;
+        }
+
+        .logo-text {
+            /* 修改點：文字稍微加大一點點，比較平衡 */
+            font-size: 17px; 
+            font-weight: 700;
+            color: var(--brand-blue);
+        }
+
+        .main-nav {
+            flex: 2;
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .nav-item {
+            position: relative;
+            padding: 28px 0;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-item a {
+            color: var(--primary-text);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--white);
+            box-shadow: 0 5px 20px rgba(27, 50, 95, 0.15);
+            list-style: none;
+            min-width: 160px;
+            border-radius: 4px;
+            border-top: 3px solid var(--brand-blue);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            padding: 10px 0;
+        }
+
+        .nav-item:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            top: 85%;
+        }
+
+        .dropdown-menu li a {
+            display: block;
+            padding: 12px 25px;
+            font-size: 14px;
+            color: #555;
+            text-align: center;
+        }
+
+        .dropdown-menu li a:hover {
+            background-color: var(--soft-blue-bg);
+            color: var(--brand-blue);
+        }
+
+        .header-icons {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .btn-line-nav {
+            background-color: #00B900;
+            color: white !important;
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .btn-line-nav:hover {
+            background-color: #009900;
+            transform: translateY(-2px);
+        }
+
+        /* --- 3. 主視覺 --- */
+        .hero {
+            background-image: url('https://placehold.co/1920x900/DCE6F1/1B325F?text=Deep+Sleep+Experience'); 
+            background-size: cover;
+            background-position: center;
+            height: 650px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(27, 50, 95, 0.1);
+        }
+
+        .hero-content {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 60px 80px;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            font-weight: 500;
+            color: var(--brand-blue);
+        }
+
+        .hero p {
+            color: var(--light-text);
+            margin-bottom: 35px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--brand-blue);
+            color: var(--white);
+            padding: 14px 45px;
+            border-radius: 2px;
+            font-size: 15px;
+            letter-spacing: 1px;
+            transition: background 0.3s;
+        }
+        
+        .btn-primary:hover {
+            background-color: #122242;
+            transform: translateY(-2px);
+        }
+
+        /* --- 4. 商品區 --- */
+        .container {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--brand-blue);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        
+        .section-subtitle {
+            color: var(--light-text);
+            font-size: 0.95rem;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        .product-card {
+            background: white;
+            transition: all 0.4s ease;
+            border: 1px solid transparent;
+            display: flex;
+            flex-direction: column; 
+        }
+        
+        .product-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--soft-blue-bg);
+            box-shadow: 0 15px 30px rgba(27, 50, 95, 0.08);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 300px; 
+            object-fit: contain; 
+            background-color: #fff;
+            margin-bottom: 20px;
+            padding: 10px;
+        }
+
+        .product-info {
+            text-align: center;
+            padding: 0 15px 20px;
+            margin-top: auto;
+        }
+        
+        .product-tag {
+            font-size: 12px;
+            color: #8faabb;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .product-name { 
+            font-size: 18px; 
+            margin-bottom: 10px; 
+            color: var(--primary-text);
+            font-weight: 500;
+        }
+        
+        .product-price { 
+            color: var(--brand-blue); 
+            font-weight: bold; 
+            font-size: 1.1rem;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo-container">
+            <img src="logo.jpg" alt="酷兑寶精品名床" class="logo-img">
+            <span class="logo-text">酷兑寶精品名床</span>
+        </a>
+
+        <nav class="main-nav">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="#">首頁</a></li>
+                <li class="nav-item">
+                    <a href="#">空間選項 ▾</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">頂級獨立筒</a></li>
+                        <li><a href="#">涼感記憶棉</a></li>
+                        <li><a href="#">天然乳膠床</a></li>
+                        <li><a href="#">防水保潔墊</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="#">關於我們</a></li>
+                <li class="nav-item"><a href="#">購買流程</a></li>
+                <li class="nav-item"><a href="#">運費說明</a></li>
+                <li class="nav-item"><a href="#">F&Q</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-icons">
+            <a href="https://line.me/ti/p/您的ID" target="_blank" class="btn-line-nav">
+                LINE 諮詢
+            </a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>擁抱寧靜藍海</h1>
+            <p>40年老師傅手藝，打造專屬台灣人的深層睡眠。<br>因為安心，所以好眠。</p>
+            <a href="#" class="btn-primary">探索睡眠系列</a>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">熱銷推薦</h2>
+            <p class="section-subtitle">嚴選材質 · 台灣製造 · 老師傅手作</p>
+        </div>
+
+        <div class="product-grid">
+            
+            <div class="product-card">
+                <img src="b1.png" class="product-img" alt="雙線硬式護框獨立筒">
+                <div class="product-info">
+                    <div class="product-tag">日本極凍紗x山寧泰x導電紗</div> 
+                    <h3 class="product-name">雙線硬式護框獨立筒</h3>
+                    <div class="product-price">歡迎諮詢</div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="b2.png" class="product-img" alt="舒柔冷膠護框獨立筒">
+                <div class="product-info">
+                    <div class="product-tag">美國美夢舒寶x山寧泰</div>
+                    <h3 class="product-name">舒柔冷膠護框獨立筒</h3>
+                    <div class="product-price">歡迎諮詢</div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="b3.png" class="product-img" alt="三線舒柔紫護框獨立筒">
+                <div class="product-info">
+                    <div class="product-tag">柔軟最佳首選</div>
+                    <h3 class="product-name">三線舒柔紫護框獨立筒</h3>
+                    <div class="product-price">歡迎諮詢</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
